@@ -1,0 +1,19 @@
+aws:
+  s3:
+    access-key: ${S3_ACCESS_KEY}
+    secret-key: ${S3_SECRET_KEY}
+    region: ${AWS_REGION}
+    bucket-name: ${S3_BUCKET}
+  ses:
+    region: ${AWS_REGION}
+    access-key: ${SES_ACCESS_KEY}
+    secret-key: ${SES_SECRET_KEY}
+    source-address: ${SES_SOURCE_ADDRESS}
+
+spring.thymeleaf:
+  prefix: classpath:/email-templates/
+  suffix: .html
+  mode: HTML
+  encoding: UTF-8
+  check-template-location: true
+  cache: false

@@ -1,0 +1,77 @@
+[versions]
+### Application Versions ###
+api = "1.0.0"
+admin-api = "1.0.0"
+
+### Project Dependency versions ###
+kotlin = "1.9.25"
+java = "21"
+kotlinCoroutines = "1.9.0"
+
+### Plugin depedency versions ###
+asciidoctorConvert = "4.0.3"
+ktlint = "12.1.1"
+
+### Spring Boot dependency versions ###
+springBoot = "3.3.5"
+springDependencyManagement = "1.1.6"
+
+### External Library dependency versions ###
+jwt = "0.12.6"
+swagger = "2.6.0"
+logging = "7.0.0"
+s3 = "3.1.1"
+querydsl = "5.1.0"
+awsSdk = "1.3.67"
+
+
+[plugins]
+### Kotlin Plugins ###
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+
+### Spring Boot Plugins ###
+springboot = { id = "org.springframework.boot", version.ref = "springBoot" }
+springboot-denpendency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+
+### External Plugins ###
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctorConvert" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+
+[libraries]
+### Spring Boot Libraries ###
+springboot-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+springboot-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+springboot-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+springboot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+springboot-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis" }
+springboot-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+springboot-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+springboot-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
+springboot-mail = { module = "org.springframework.boot:spring-boot-starter-mail" }
+springboot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
+
+### Kotlin Libraries ###
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
+
+### External Libraries ###
+swagger = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "swagger" }
+prometheus = { module = "io.micrometer:micrometer-registry-prometheus" }
+
+jwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jwt" }
+jwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jwt" }
+jwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jwt" }
+
+logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "logging" }
+
+aws-ses = { module = "aws.sdk.kotlin:ses", version.ref = "awsSdk" }
+aws-s3 = { module = "aws.sdk.kotlin:s3", version.ref = "awsSdk" }
+okhttp3 = { module = "com.squareup.okhttp3:okhttp", version = "5.0.0-alpha.14" }
+
+postgresql = { module = "org.postgresql:postgresql" }
+
+
+[bundles]
+jwt = ["jwt-api", "jwt-impl", "jwt-jackson"]
