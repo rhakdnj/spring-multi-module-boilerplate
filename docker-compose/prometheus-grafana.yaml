@@ -1,0 +1,24 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - type: bind
+        source: ./etc/prometheus.yaml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+      - ./dev/prometheus:/prometheus
+    networks:
+      - ${SIMPPL_NETWORK:-prometheus}
+
+  grafana:
+    image: grafana/grafana
+    hostname: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dev/grafana:/var/lib/grafana
+    networks:
+      - ${SIMPPL_NETWORK:-grafana}
