@@ -1,0 +1,8 @@
+{
+  "name": "docs",
+  "scripts": {
+    "api": "pnpm --filter @docs/api",
+    "admin": "pnpm --filter @docs/admin",
+    "preinstall": "npx only-allow pnpm"
+  }
+}
