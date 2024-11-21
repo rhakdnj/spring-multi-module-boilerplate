@@ -1,0 +1,9 @@
+{
+  "name": "@docs/admin",
+  "scripts": {
+    "bundleOpenapi": "npx swagger-merger -i openapi.yml -o index.yml",
+    "lint": "npx @redocly/cli lint openapi.yml",
+    "bundleRedoc": "npx @redocly/cli build-docs openapi.yml --output=index.html --config=../core/redocly.yml",
+    "build": "pnpm run bundleOpenapi && pnpm run lint && pnpm run bundleRedoc"
+  }
+}
