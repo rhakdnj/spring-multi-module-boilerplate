@@ -18,7 +18,7 @@ springDependencyManagement = "1.1.6"
 
 ### External Library dependency versions ###
 jwt = "0.12.6"
-swagger = "2.6.0"
+swagger = "2.7.0"
 logging = "7.0.0"
 s3 = "3.1.1"
 querydsl = "5.1.0"
