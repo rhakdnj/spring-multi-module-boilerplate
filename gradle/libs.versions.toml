@@ -10,7 +10,7 @@ kotlinCoroutines = "1.9.0"
 
 ### Plugin depedency versions ###
 asciidoctorConvert = "4.0.3"
-ktlint = "12.1.1"
+ktlint = "12.1.2"
 
 ### Spring Boot dependency versions ###
 springBoot = "3.3.5"
