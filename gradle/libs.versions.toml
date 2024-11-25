@@ -13,7 +13,7 @@ asciidoctorConvert = "4.0.3"
 ktlint = "12.1.1"
 
 ### Spring Boot dependency versions ###
-springBoot = "3.3.5"
+springBoot = "3.4.0"
 springDependencyManagement = "1.1.6"
 
 ### External Library dependency versions ###
