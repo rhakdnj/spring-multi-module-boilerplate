@@ -14,7 +14,6 @@ dependencies {
     implementation(libs.springboot.validation)
     implementation(libs.springboot.security)
     implementation(libs.bundles.jwt)
-    implementation(libs.swagger)
     developmentOnly(libs.springboot.devtools)
 
     testImplementation(libs.springboot.test)

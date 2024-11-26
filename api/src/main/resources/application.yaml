@@ -12,34 +12,22 @@ management:
       exposure:
         include: health, prometheus
 
-springdoc:
-  api-docs:
-    path: /api-docs
-  packages-to-scan: kr.simppl.api
-  default-consumes-media-type: application/json;charset=UTF-8
-  default-produces-media-type: application/json;charset=UTF-8
-  swagger-ui:
-    path: /
-    disable-swagger-default-url: true
-    display-request-duration: true
-    operations-sorter: alpha
-
 ---
 spring:
   config:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=local
-    driver-class-name: org.postgresql.Driver
-    username: simppl
-    password: simppl
+    url: jdbc:mysql://localhost:3306/local
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: username
+    password: password
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         format_sql: true
