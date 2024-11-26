@@ -3,13 +3,14 @@ package com.example.core.domain.user.repository
 import com.example.core.domain.user.User
 import com.example.core.exception.NotFoundException
 import org.springframework.data.jpa.repository.JpaRepository
+import java.util.UUID
 
-fun UserRepository.findByIdOrNull(id: Long): User? = findById(id).orElse(null)
+fun UserRepository.findByIdOrNull(id: UUID): User? = findById(id).orElse(null)
 
-fun UserRepository.findByIdOrThrow(id: Long): User = findByIdOrNull(id) ?: throw NotFoundException("사용자가 존재하지 않습니다.")
+fun UserRepository.findByIdOrThrow(id: UUID): User = findByIdOrNull(id) ?: throw NotFoundException("사용자가 존재하지 않습니다.")
 
 interface UserRepository :
-    JpaRepository<User, Long>,
+    JpaRepository<User, UUID>,
     FindUsersByEmailLikeOrNameLikeQuery,
     FindOneQuery {
     fun findByEmailOrNickname(

@@ -9,6 +9,7 @@ import com.example.core.exception.UnauthorizedException
 import com.example.core.redis.repository.RefreshTokenRepository
 import org.springframework.stereotype.Service
 import java.util.Date
+import java.util.UUID
 import kotlin.time.Duration.Companion.days
 
 @Service
@@ -36,7 +37,7 @@ class AuthService(
         val convertedToken = authTokenProvider.convertAuthToken(token)
         val claims = convertedToken.expiredTokenClaims ?: throw UnauthorizedException("token is not expired or invalid")
 
-        val userId = claims.subject.toLong()
+        val userId = UUID.fromString(claims.subject.toString())
         val role = Role.valueOf(claims[AUTHORITIES_KEY] as String)
 
         val convertedRefreshToken = authTokenProvider.convertAuthToken(refreshToken)
@@ -63,19 +64,21 @@ class AuthService(
     }
 
     private fun createToken(
-        userId: Long,
+        userId: UUID,
         role: Role,
         now: Date,
-    ): String = authTokenProvider.createAuthToken(
+    ): String =
+        authTokenProvider.createAuthToken(
             userId = userId,
             Date(now.time + authProperties.tokenTimeoutMs),
             role.name,
         ).token
 
     private fun createRefreshToken(
-        userId: Long,
+        userId: UUID,
         now: Date,
-    ): String = authTokenProvider.createAuthToken(
+    ): String =
+        authTokenProvider.createAuthToken(
             userId = userId,
             Date(now.time + authProperties.refreshTokenTimeoutMs),
         ).token

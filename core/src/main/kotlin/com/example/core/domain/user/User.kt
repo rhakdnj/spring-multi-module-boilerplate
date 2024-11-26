@@ -2,27 +2,23 @@ package com.example.core.domain.user
 
 import com.example.core.domain.common.BaseEntity
 import com.example.core.enums.Role
+import com.fasterxml.uuid.Generators
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import org.hibernate.annotations.SQLDelete
+import java.util.UUID
 
 @Entity
-@Table(name = "\"User\"")
-@SQLDelete(sql = "UPDATE User SET deleted_at = NOW() WHERE id = ?")
+@Table(name = "user")
 class User(
     @Id
-    @Column(name = "id", nullable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0L,
+    val id: UUID = Generators.timeBasedEpochRandomGenerator().generate(),
     @Column(name = "sort", nullable = false)
     var role: Role = Role.ROLE_USER,
-    @Column(name = "email", nullable = false, length = 45)
+    @Column(name = "email", nullable = false, length = 45, unique = true)
     val email: String,
-    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "password", nullable = false, length = 100)
     var password: String = "NO_PASSWORD",
     @Column(name = "name", nullable = false, length = 10)
     var name: String,

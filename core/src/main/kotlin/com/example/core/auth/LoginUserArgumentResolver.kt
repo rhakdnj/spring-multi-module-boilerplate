@@ -9,6 +9,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
+import java.util.UUID
 
 @Component
 class LoginUserArgumentResolver : HandlerMethodArgumentResolver {
@@ -29,6 +30,6 @@ class LoginUserArgumentResolver : HandlerMethodArgumentResolver {
         if (userId == null || role == null) {
             throw UnauthorizedException("로그인이 필요합니다.")
         }
-        return TokenPayload(userId.toLong(), role)
+        return TokenPayload(UUID.fromString(userId.toString()), role)
     }
 }

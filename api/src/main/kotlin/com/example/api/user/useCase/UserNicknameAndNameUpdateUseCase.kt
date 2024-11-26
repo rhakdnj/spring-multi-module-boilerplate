@@ -4,6 +4,7 @@ import com.example.core.annotation.UseCase
 import com.example.core.domain.user.repository.UserRepository
 import com.example.core.exception.ConflictException
 import org.springframework.transaction.annotation.Transactional
+import java.util.UUID
 
 @UseCase
 class UserNicknameAndNameUpdateUseCase(
@@ -11,7 +12,7 @@ class UserNicknameAndNameUpdateUseCase(
 ) {
     @Transactional
     fun change(
-        id: Long,
+        id: UUID,
         username: String,
         nickname: String,
     ) {

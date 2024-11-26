@@ -8,6 +8,7 @@ import io.jsonwebtoken.MalformedJwtException
 import io.jsonwebtoken.UnsupportedJwtException
 import io.jsonwebtoken.security.SignatureException
 import java.util.Date
+import java.util.UUID
 import javax.crypto.SecretKey
 
 const val AUTHORITIES_KEY: String = "role"
@@ -16,7 +17,7 @@ class AuthToken(
     var token: String,
     private val key: SecretKey,
 ) {
-    constructor(userId: Long, expiry: Date, key: SecretKey, role: String? = null) : this("", key) {
+    constructor(userId: UUID, expiry: Date, key: SecretKey, role: String? = null) : this("", key) {
         token =
             if (role != null) {
                 createAuthToken(userId, expiry, role)
@@ -78,7 +79,7 @@ class AuthToken(
             .payload
 
     private fun createAuthToken(
-        userId: Long,
+        userId: UUID,
         expiry: Date,
     ): String =
         Jwts
@@ -89,7 +90,7 @@ class AuthToken(
             .compact()
 
     private fun createAuthToken(
-        userId: Long,
+        userId: UUID,
         expiry: Date,
         role: String,
     ): String =

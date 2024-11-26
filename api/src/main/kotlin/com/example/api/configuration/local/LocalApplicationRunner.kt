@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 @Component
 @Profile("local")
 class LocalApplicationRunner(
-	private val userRunner: LocalUserRunner,
+    private val userRunner: LocalUserRunner,
 ) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
         userRunner.init()
