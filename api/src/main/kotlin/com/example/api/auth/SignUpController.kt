@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 
 @RestController
 class SignUpController(
@@ -18,7 +19,7 @@ class SignUpController(
     @RequestMapping("/users")
     fun signUp(
         @Valid @RequestBody request: SignUpRequest,
-    ): ResponseEntity<Long> = ResponseEntity.ok(service.signUp(request))
+    ): ResponseEntity<UUID> = ResponseEntity.ok(service.signUp(request))
 }
 
 data class SignUpRequest(

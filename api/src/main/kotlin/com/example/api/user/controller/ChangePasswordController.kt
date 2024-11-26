@@ -1,7 +1,6 @@
 package com.example.api.user.controller
 
 import com.example.api.user.useCase.UserPasswordChangeUseCase
-import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
-@Tag(name = "사용자 API")
 @RestController
 class ChangePasswordController(
     private val svc: UserPasswordChangeUseCase,

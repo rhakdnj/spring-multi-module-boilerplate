@@ -24,10 +24,12 @@ class ReissueTokenController(
         httpServletRequest: HttpServletRequest,
         httpServletResponse: HttpServletResponse,
     ): ResponseEntity<ReissueTokenResponse> {
-        val token = httpServletRequest.getAccessToken()
-            ?: throw BadRequestException("expire token not found (in header)")
-        val refreshToken = getCookie(httpServletRequest, REFRESH_TOKEN)?.value
-            ?: throw BadRequestException("refresh token not found (in cookie)")
+        val token =
+            httpServletRequest.getAccessToken()
+                ?: throw BadRequestException("expire token not found (in header)")
+        val refreshToken =
+            getCookie(httpServletRequest, REFRESH_TOKEN)?.value
+                ?: throw BadRequestException("refresh token not found (in cookie)")
 
         val (newToken, newOrOldRefreshToken) = authService.reissueToken(token, refreshToken)
 
@@ -37,7 +39,7 @@ class ReissueTokenController(
                 httpServletResponse,
                 REFRESH_TOKEN,
                 newOrOldRefreshToken,
-                authProperties.refreshTokenTimeoutMs / 1_000
+                authProperties.refreshTokenTimeoutMs / 1_000,
             )
         }
 

@@ -12,6 +12,7 @@ dependencies {
     kapt("com.querydsl:querydsl-apt:${rootProject.libs.versions.querydsl.get()}:jakarta")
     implementation(libs.springboot.redis)
 
+    implementation(libs.uuidGenerator)
     implementation(libs.bundles.jwt)
 
     implementation(libs.springboot.actuator)
@@ -21,5 +22,5 @@ dependencies {
 
     api(libs.logging)
 
-    runtimeOnly(libs.postgresql)
+    runtimeOnly(libs.mysql)
 }

@@ -1,14 +1,12 @@
 package com.example.api.user.controller
 
 import com.example.api.user.domainservice.UserDomainService
-import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
-@Tag(name = "사용자 API")
 @RestController
 class CheckDuplicatedController(
     private val userDomainService: UserDomainService,

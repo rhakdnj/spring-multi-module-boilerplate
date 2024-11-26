@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Component
 import java.util.Date
+import java.util.UUID
 import javax.crypto.SecretKey
 
 @Component
@@ -18,7 +19,7 @@ class AuthTokenProvider(
     private val key: SecretKey = Keys.hmacShaKeyFor(authProperties.tokenSecret.toByteArray())
 
     fun createAuthToken(
-        userId: Long,
+        userId: UUID,
         expiry: Date,
         role: String? = null,
     ): AuthToken = AuthToken(userId, expiry, key, role)

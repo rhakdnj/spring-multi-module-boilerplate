@@ -5,6 +5,7 @@ import com.example.api.user.domainservice.UserDomainService
 import com.example.core.domain.user.repository.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import java.util.UUID
 
 @Service
 class SignUpService(
@@ -12,7 +13,7 @@ class SignUpService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
 ) {
-    fun signUp(request: SignUpRequest): Long {
+    fun signUp(request: SignUpRequest): UUID {
         userService.checkDuplicatedEmailOrNickname(request.email, request.nickname)
 
         val user = request.toEntity()
