@@ -4,7 +4,7 @@ api = "1.0.0"
 admin-api = "1.0.0"
 
 ### Project Dependency versions ###
-kotlin = "1.9.25"
+kotlin = "2.1.0"
 java = "21"
 kotlinCoroutines = "1.9.0"
 
